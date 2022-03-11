@@ -689,6 +689,57 @@ til "Restart"
 
 -  Referer "Proessser ny data" over, vis det også.
 
+----
+
+Prerequisits: Existing source system
+
+- Pipes > ``New pipe``
+
+- Type in the pipe's ``_id``
+
+- In the Templates tab:
+
+  - Chose Source Sytem ``system:sesam-node``
+  - Chose Source Provider ``embedded prototype``
+  - Click ``Replace``
+  - Click ``Add DTL transform``
+  - Add some embedded test data and save the pipe:
+
+::
+
+  {
+    "_id": "1",
+    "data": "One"
+  }, {
+    "_id": "2",
+    "data": "Two"
+  }
+
+You should now see something like this:
+
+::
+
+  {
+    "_id": "practice",
+    "type": "pipe",
+    "source": {
+      "type": "embedded"
+    },
+    "transform": {
+      "type": "dtl",
+      "rules": {
+        "default": [
+          ["copy", "_id"]
+        ]
+      }
+    }
+  }
+
+Now let's save and run the pipe and look at the results.
+
+Click ``Save`` and then click ``Start``.
+
+
 .. _pipe-shortcuts-3-1:
 
 Pipe shortcuts
